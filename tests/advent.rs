@@ -18,3 +18,12 @@ fn find_2020_triplets(){
         675,
         1456])), 241861950)
 }
+
+#[test]
+fn find_num_valid_passwords(){
+    assert_eq!(adventofcode_2020::valid_password(vec![
+        (1, 3, "a", "abcde"),
+        (1, 3, "b", "cdefg"),
+        (2, 9, "c", "ccccccccc" )
+    ]), 2)
+}

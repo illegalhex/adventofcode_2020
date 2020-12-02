@@ -11,3 +11,7 @@ pub fn find_2020_pair(vals_in: (usize, Vec<i64>) ) -> i64 {
     }
     value
 }
+
+pub fn valid_password(passwords: Vec<(usize, usize, &str, &str)>) -> usize{
+    2
+}
