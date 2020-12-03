@@ -20,10 +20,19 @@ fn find_2020_triplets(){
 }
 
 #[test]
-fn find_num_valid_passwords(){
-    assert_eq!(adventofcode_2020::valid_password(vec![
+fn find_num_valid_passwords_old(){
+    assert_eq!(adventofcode_2020::valid_password("old", vec![
         (1, 3, "a", "abcde"),
         (1, 3, "b", "cdefg"),
         (2, 9, "c", "ccccccccc" )
     ]), 2)
+}
+
+#[test]
+fn find_num_valid_passwords_new(){
+    assert_eq!(adventofcode_2020::valid_password("new", vec![
+        (1, 3, "a", "abcde"),
+        (1, 3, "b", "cdefg"),
+        (2, 9, "c", "ccccccccc" )
+    ]), 0)
 }

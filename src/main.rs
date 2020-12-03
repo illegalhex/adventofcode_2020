@@ -1011,7 +1011,7 @@ let passwords = vec![
     (7, 10, "m", "qmpgmmsmmmmkmmkj"),
     (4, 7, "g", "vczggdgbgxgg")
 ];
-println!("number of valid passwords is: {}", adventofcode_2020::valid_password(passwords));
+println!("number of valid passwords is: {}", adventofcode_2020::valid_password("old", passwords));
 }
 
 fn main() {
