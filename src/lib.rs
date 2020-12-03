@@ -1,5 +1,7 @@
 use itertools::Itertools;
 
+pub mod input_data;
+
 pub fn find_2020_pair(vals_in: (usize, Vec<i64>) ) -> i64 {
     let vals = vals_in.1;
     let mut value = 0;
