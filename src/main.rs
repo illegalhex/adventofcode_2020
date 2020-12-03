@@ -1,8 +1,8 @@
 mod input_data;
 
 fn day1(){
-    println!("ex1 answer is:   {}",adventofcode_2020::find_2020_pair((2, input_data::day_one::print())));
-    println!("ex2 answer is:   {}",adventofcode_2020::find_2020_pair((3, input_data::day_one::print())));
+    println!("ex1 answer is:   {}", adventofcode_2020::find_2020_elements(2, input_data::day_one::print()));
+    println!("ex2 answer is:   {}", adventofcode_2020::find_2020_elements(3, input_data::day_one::print()));
 }
 
 fn day2(){
