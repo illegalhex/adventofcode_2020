@@ -51,4 +51,4 @@ pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, String, Str
     num_valid_passwords 
 }
 
-pub fn count(tree_map: &str){}
+pub fn count_of_trees(tree_map: Vec<&str>)-> usize{7}
