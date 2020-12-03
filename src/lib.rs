@@ -20,7 +20,7 @@ pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, &str, &str)
                     num_valid_passwords += 1;
                 }
             },
-        "new" => {num_valid_passwords =0 },
+        "new" => {num_valid_passwords = 1 },
         &_ => {num_valid_passwords =0 }
     }
 

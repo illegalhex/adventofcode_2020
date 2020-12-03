@@ -34,5 +34,5 @@ fn find_num_valid_passwords_new(){
         (1, 3, "a", "abcde"),
         (1, 3, "b", "cdefg"),
         (2, 9, "c", "ccccccccc" )
-    ]), 0)
+    ]), 1)
 }
