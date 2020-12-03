@@ -2,13 +2,13 @@ use itertools::Itertools;
 
 pub mod input_data;
 
-pub fn find_2020_elements(size: usize, vals_in:Vec<usize>) -> usize {
+pub fn find_2020_elements(size: usize, vals_in:Vec<usize>) -> Result<usize, String>  {
     for i in vals_in.into_iter().combinations(size).into_iter() {
         if i.iter().sum::<usize>() == 2020 {
-            return i.iter().product()
+            return Ok(i.iter().product())
         }
     }
-    0
+    Err("No match was found".to_string())
 }
 
 pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, &str, &str)>) -> usize{
