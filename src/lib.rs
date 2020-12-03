@@ -2,9 +2,9 @@ use itertools::Itertools;
 
 pub mod input_data;
 
-pub fn find_2020_elements(numb: usize, vals_in:Vec<usize>) -> usize {
+pub fn find_2020_elements(size: usize, vals_in:Vec<usize>) -> usize {
     let mut value = 0;
-    for i in vals_in.into_iter().combinations(numb).into_iter() {
+    for i in vals_in.into_iter().combinations(size).into_iter() {
         if i.iter().sum::<usize>() == 2020 {
             value = i.iter().product();
         }
