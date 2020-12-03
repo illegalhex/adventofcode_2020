@@ -1011,7 +1011,10 @@ let passwords = vec![
     (7, 10, "m", "qmpgmmsmmmmkmmkj"),
     (4, 7, "g", "vczggdgbgxgg")
 ];
-println!("number of valid passwords is: {}", adventofcode_2020::valid_password("old", passwords));
+let ex3_vec = passwords.clone();
+let ex4_vec = passwords.clone();
+println!("number of valid passwords is: {}", adventofcode_2020::valid_password("old", ex3_vec));
+println!("number of valid passwords is: {}", adventofcode_2020::valid_password("new", ex4_vec));
 }
 
 fn main() {
