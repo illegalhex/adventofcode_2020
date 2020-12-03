@@ -13,5 +13,12 @@ pub fn find_2020_pair(vals_in: (usize, Vec<i64>) ) -> i64 {
 }
 
 pub fn valid_password(passwords: Vec<(usize, usize, &str, &str)>) -> usize{
-    2
+    let mut num_valid_passwords = 0;
+    for i in passwords.into_iter() {
+        if i.3.matches(i.2).count() >= i.0 && i.3.matches(i.2).count() <= i.1 {
+            num_valid_passwords += 1;
+        }
+        
+    }
+    num_valid_passwords 
 }
