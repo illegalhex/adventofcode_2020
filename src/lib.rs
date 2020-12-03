@@ -27,6 +27,5 @@ pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, &str, &str)
         },
         &_ => {}
     }
-
     num_valid_passwords 
 }
