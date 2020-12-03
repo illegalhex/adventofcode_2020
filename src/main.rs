@@ -9,8 +9,12 @@ fn day2(){
     println!("number of valid passwords is: {}", adventofcode_2020::valid_password("old", input_data::day_two::print(adventofcode_2020::readlines("text/day2.txt" ))));
     println!("number of valid passwords is: {}", adventofcode_2020::valid_password("new", input_data::day_two::print(adventofcode_2020::readlines("text/day2.txt" ))));
 }
+fn day3(){
+    println!("number of trees are: {}", adventofcode_2020::count_of_trees(adventofcode_2020::readlines("text/day3.txt" )));
+}
 
 fn main() {
     day1();
     day2();
+    day3();
 }
