@@ -13,5 +13,4 @@ fn day2(){
 fn main() {
     day1();
     day2();
-    // println!("sdafdsfsdfsds: {:?}", adventofcode_2020::readlines("text/day2.txt" ));
 }
