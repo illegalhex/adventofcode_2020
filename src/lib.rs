@@ -20,13 +20,12 @@ pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, &str, &str)
                 }
             },
         "new" => for i in passwords.into_iter(){
-                let password_candidate: Vec<char> = i.3.chars().collect();
-                let password_candidate: Vec<String> = password_candidate.into_iter().map(|s| s.to_string()).collect();
+                let password_candidate = i.3.chars().collect::<Vec<char>>().into_iter().map(|s| s.to_string()).collect::<Vec<String>>();
                 if password_candidate[i.0-1] == i.2 && password_candidate[i.1-1] != i.2 || password_candidate[i.0-1] != i.2 && password_candidate[i.1-1] == i.2 {
                     num_valid_passwords += 1;
                 }
         },
-        &_ => {num_valid_passwords =0 }
+        &_ => {}
     }
 
     num_valid_passwords 
