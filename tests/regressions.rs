@@ -27,5 +27,10 @@ fn find_number_of_trees(){
 }
 #[test]
 fn find_number_of_trees_mul(){
-    assert_eq!(adventofcode_2020::count_of_trees(3, 1, adventofcode_2020::readlines("text/day3.txt" )), 156)
+    let first = adventofcode_2020::count_of_trees(1, 1, adventofcode_2020::readlines("text/day3.txt" ));
+    let second = adventofcode_2020::count_of_trees(3, 1, adventofcode_2020::readlines("text/day3.txt" ));
+    let third = adventofcode_2020::count_of_trees(5, 1, adventofcode_2020::readlines("text/day3.txt" ));
+    let forth = adventofcode_2020::count_of_trees(7, 1, adventofcode_2020::readlines("text/day3.txt" ));
+    let fifth = adventofcode_2020::count_of_trees(1, 2, adventofcode_2020::readlines("text/day3.txt" ));
+    assert_eq!(first * second * third * forth * fifth, 3521829480);
 }
