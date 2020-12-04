@@ -20,8 +20,13 @@ fn day3(){
     println!("There are {} trees. It is the product of: {}, {}, {}, {}  {}",ski_product, first , second , third , forth , fifth )
 }
 
+fn day4(){
+    println!("There are {} valid passports if cid is ignored", adventofcode_2020::number_of_passports(input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))));
+}
+
 fn main() {
     day1();
     day2();
     day3();
+    day4();
 }

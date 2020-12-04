@@ -28,7 +28,8 @@ pub mod print{
         // that match the defined data structure
         let mut return_vec: Vec<_>  = Vec::new();
         let mut massive_string: String = "".to_string();
-        for i in print_vec.into_iter() {if i == ""{massive_string.push_str(",");continue;}massive_string.push_str(&i);}
+        for i in print_vec.into_iter() {if i == ""{massive_string.push_str(", ");continue;}massive_string.push_str(format!("{} ",&i).as_str());}
+        println!("{}",massive_string );
         let first_level_vec: Vec<&str>  = massive_string.split(|x| x == ',').collect();
         for i in first_level_vec.into_iter(){
             let temp_vec = i.split_whitespace().collect::<Vec<&str>>();
