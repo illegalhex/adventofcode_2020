@@ -34,3 +34,9 @@ fn find_number_of_trees_mul(){
     let fifth = adventofcode_2020::count_of_trees(1, 2, adventofcode_2020::readlines("text/day3.txt" ));
     assert_eq!(first * second * third * forth * fifth, 3521829480);
 }
+
+
+#[test]
+fn find_number_of_valid_passports(){
+    assert_eq!( adventofcode_2020::number_of_passports(input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 210 );
+}
