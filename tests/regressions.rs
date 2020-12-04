@@ -23,5 +23,9 @@ fn find_num_valid_passwords_new(){
 
 #[test]
 fn find_number_of_trees(){
-    assert_eq!(adventofcode_2020::count_of_trees(adventofcode_2020::readlines("text/day3.txt" )), 156)
+    assert_eq!(adventofcode_2020::count_of_trees(3, 1, adventofcode_2020::readlines("text/day3.txt" )), 156)
+}
+#[test]
+fn find_number_of_trees_mul(){
+    assert_eq!(adventofcode_2020::count_of_trees(3, 1, adventofcode_2020::readlines("text/day3.txt" )), 156)
 }

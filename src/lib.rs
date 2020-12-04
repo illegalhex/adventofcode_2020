@@ -51,16 +51,23 @@ pub fn valid_password(pass_type: &str, passwords: Vec<(usize, usize, String, Str
     num_valid_passwords 
 }
 
-pub fn count_of_trees(down: usize, right: usize, tree_map: Vec<String>)-> usize{
+pub fn count_of_trees(right: usize, down: usize, tree_map: Vec<String>)-> usize{
     let mut tree_count = 0;
     let mut right_offset = 0;
-    for i in tree_map.into_iter() {
-        if right_offset > i.len()-1 {
+    let mut count = 1;
+    for i in tree_map.iter() {
+        if  count % down == 0 && down != 1 {
+            count += 1;
+            continue
+        }
+        if right_offset > i.len()-right {
             right_offset = 0;
         }
         let terrain = i .chars().nth(right_offset);
-        if terrain == Some('#') {tree_count+=1}
-        right_offset += right
+        if terrain == Some('#') {tree_count+=1};
+        right_offset += right;
+        count += 1;
+
     }
     tree_count
 }

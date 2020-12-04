@@ -56,15 +56,41 @@ fn return_tree_map() -> Vec<String> {
 
 #[test]
 fn find_num_trees(){
-    assert_eq!(adventofcode_2020::count_of_trees(1, 3, return_tree_map()), 7)
+    assert_eq!(adventofcode_2020::count_of_trees(3, 1, return_tree_map()), 7)
 }
 
+
 #[test]
-fn find_num_multislopes_trees(){
+fn find_multislopes_trees_first(){
+
+    assert_eq!(adventofcode_2020::count_of_trees(1, 1, return_tree_map()), 2);
+}
+#[test]
+fn find_multislopes_trees_second(){
+
+    assert_eq!(adventofcode_2020::count_of_trees(3, 1, return_tree_map()), 7);
+}
+#[test]
+fn find_multislopes_trees_third(){
+
+    assert_eq!(adventofcode_2020::count_of_trees(5, 1, return_tree_map()), 3);
+}
+#[test]
+fn find_multislopes_trees_forth(){
+
+    assert_eq!(adventofcode_2020::count_of_trees(7, 1, return_tree_map()), 4);
+}
+#[test]
+fn find_multislopes_trees_fifth(){
+    assert_eq!(adventofcode_2020::count_of_trees(1, 2, return_tree_map()), 2);
+}
+#[test]
+fn find_multislopes_trees_product(){
     let first = adventofcode_2020::count_of_trees(1, 1, return_tree_map());
-    let second = adventofcode_2020::count_of_trees(1, 1, return_tree_map());
-    let third = adventofcode_2020::count_of_trees(1, 1, return_tree_map());
-    let forth = adventofcode_2020::count_of_trees(1, 1, return_tree_map());
-    let fifth = adventofcode_2020::count_of_trees(1, 1, return_tree_map());
-    // assert_eq!(adventofcode_2020::count_of_trees(return_tree_map()), 336)
+    let second = adventofcode_2020::count_of_trees(3, 1, return_tree_map());
+    let third = adventofcode_2020::count_of_trees(5, 1, return_tree_map());
+    let forth = adventofcode_2020::count_of_trees(7, 1, return_tree_map());
+    let fifth = adventofcode_2020::count_of_trees(1, 2, return_tree_map());
+
+    assert_eq!(first * second * third * forth * fifth, 336);
 }
