@@ -2,6 +2,7 @@ use itertools::Itertools;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
+use std::collections::HashMap;
 
 pub mod input_data;
 
@@ -60,4 +61,27 @@ pub fn count_of_trees(right: usize, down: usize, tree_map: Vec<String>)-> usize{
         right_offset += right;
     }
     tree_count
+}
+
+pub fn number_of_passports(passport_vec: Vec<HashMap<String, String>>) -> usize{
+    let required_fields: Vec<String> = vec![
+        "byr".to_string(),
+        "iyr".to_string(),
+        "eyr".to_string(),
+        "hgt".to_string(),
+        "hcl".to_string(),
+        "ecl".to_string(),
+        "pid".to_string(),
+        ];
+    let mut valid_passports: usize = 0;
+
+    for passports in passport_vec.into_iter(){
+        let req_field_clone = required_fields.clone();
+        let key_match: Vec<_> = req_field_clone.iter().filter(|k| passports.contains_key(k.as_str())).collect();
+        if key_match.len() == req_field_clone.len(){
+            valid_passports +=1;
+        }
+    }
+    valid_passports
+
 }

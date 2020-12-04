@@ -139,6 +139,5 @@ fn return_passports() -> Vec<HashMap<String, String>> {
 
 #[test]
 fn find_number_valid_passports(){
-    println!("{:?}", return_passports());
-    assert_eq!(true, true)
+    assert_eq!(adventofcode_2020::number_of_passports(return_passports()), 2)
 }
