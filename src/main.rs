@@ -17,7 +17,7 @@ fn day3(){
     let forth = adventofcode_2020::count_of_trees(7, 1, adventofcode_2020::readlines("text/day3.txt" ));
     let fifth = adventofcode_2020::count_of_trees(1, 2, adventofcode_2020::readlines("text/day3.txt" ));
     let ski_product = first * second * third * forth * fifth;
-    println!("the product of  {}, {}, {}, {}, {} is {}", first , second , third , forth , fifth, ski_product)
+    println!("there are {} trees. It is the product of: {}, {}, {}, {}  {}",ski_product, first , second , third , forth , fifth )
 }
 
 fn main() {
