@@ -60,7 +60,6 @@ pub fn count_of_trees(right: usize, down: usize, tree_map: Vec<String>)-> usize{
             count += 1;
             continue
         }
-        // let terrain = i.chars().nth(right_offset % i.len() );
         if i.chars().nth(right_offset % i.len() ) == Some('#') {tree_count+=1};
         right_offset += right;
         count += 1;
