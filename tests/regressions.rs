@@ -38,5 +38,5 @@ fn find_number_of_trees_mul(){
 
 #[test]
 fn find_number_of_valid_passports(){
-    assert_eq!( adventofcode_2020::number_of_passports(input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 210 );
+    assert_eq!( adventofcode_2020::number_of_passports(adventofcode_2020::input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 210 );
 }

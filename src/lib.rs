@@ -83,5 +83,9 @@ pub fn number_of_passports(passport_vec: Vec<HashMap<String, String>>) -> usize{
         }
     }
     valid_passports
+}
 
+pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
+    println!("{:?}", passport);
+    return true;
 }
