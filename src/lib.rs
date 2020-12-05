@@ -63,7 +63,26 @@ pub fn count_of_trees(right: usize, down: usize, tree_map: Vec<String>)-> usize{
     tree_count
 }
 
-pub fn number_of_passports(passport_vec: Vec<HashMap<String, String>>) -> usize{
+
+pub fn number_of_passports(verify_data: bool, passport_vec: Vec<HashMap<String, String>>) -> usize{
+
+    let mut valid_passports: usize = 0;
+
+    for passports in passport_vec.into_iter(){
+        if verify_data {
+            if test_passport_contents(passports){
+                valid_passports += 1;
+            }
+        } else {
+            if check_passport_fields(passports){
+                valid_passports += 1;
+            }
+        }
+    }
+    valid_passports
+}
+
+pub fn check_passport_fields(passport: HashMap<String, String>) -> bool {
     let required_fields: Vec<String> = vec![
         "byr".to_string(),
         "iyr".to_string(),
@@ -73,19 +92,55 @@ pub fn number_of_passports(passport_vec: Vec<HashMap<String, String>>) -> usize{
         "ecl".to_string(),
         "pid".to_string(),
         ];
-    let mut valid_passports: usize = 0;
-
-    for passports in passport_vec.into_iter(){
-        let req_field_clone = required_fields.clone();
-        let key_match: Vec<_> = req_field_clone.iter().filter(|k| passports.contains_key(k.as_str())).collect();
-        if key_match.len() == req_field_clone.len(){
-            valid_passports +=1;
-        }
+    let req_field_clone = required_fields.clone();
+    let key_match: Vec<_> = req_field_clone.iter().filter(|k| passport.contains_key(k.as_str())).collect();
+    if key_match.len() == req_field_clone.len(){
+        return true;
+    } else {
+        return false;
     }
-    valid_passports
 }
 
 pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
-    println!("{:?}", passport);
+    let passport_clone = passport.clone();
+    if check_passport_fields(passport_clone) == false {return false;} 
+    // if 2020 >= passport.get("byr").unwrap()parse::<i32>(); 
+    let mut byr = passport.get("byr").unwrap().parse::<isize>();
+    let mut iyr = passport.get("iyr").unwrap().parse::<isize>();
+    let mut eyr = passport.get("eyr").unwrap().parse::<isize>();
+    let mut hgt = passport.get("hgt").unwrap();
+    let mut hcl = passport.get("hcl").unwrap();
+    let mut ecl = passport.get("ecl").unwrap();
+    let mut pid = passport.get("pid").unwrap().parse::<isize>();
+    // let 
+    match byr {
+        Ok(byr_r) => byr = Ok(byr_r),
+        Err(_) => return false
+    }
+    match iyr {
+        Ok(iyr_r) => iyr = Ok(iyr_r),
+        Err(_) => return false
+    }
+    match eyr {
+        Ok(eyr_r) => eyr = Ok(eyr_r),
+        Err(_) => return false
+    }
+    // match hgt {
+    //     Ok(hgt_r) => hgt = Ok(hgt_r),
+    //     Err(_) => return false
+    // }
+    match pid {
+        Ok(pid_r) => pid = Ok(pid_r),
+        Err(_) => return false
+    }
+    println!("{:?}", byr );
+    println!("{:?}", iyr );
+    println!("{:?}", eyr );
+    println!("{:?}", hgt );
+
+    println!("{:?}", hcl );
+    println!("{:?}", ecl );
+    println!("{:?}", pid );
     return true;
 }
+
