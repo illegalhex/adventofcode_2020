@@ -115,6 +115,7 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     if pid.len() != 9 {return false};
 
     let mut pid = pid.parse::<isize>();
+    if !hgt_t.contains("cm") {if  !hgt_t.contains("in") {return false}};
     let hgt_match = hgt_t.chars().collect::<Vec<char>>();
     let hgt: Vec<String> = vec![
         hgt_t.split(|s| (s == 'c') || (s == 'i')).collect::<String>().split(|s| (s == 'm') || (s == 'n')).collect::<String>(),
@@ -165,19 +166,6 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     }
     if vec!["amb".to_string(), "blu".to_string(), "brn".to_string(), "gry".to_string(), "grn".to_string(), "hzl".to_string(), "oth".to_string(), ].into_iter().find(|x| x == ecl) == None {return false};
     
-    // println!(" passport with id of {:?} has the data of:
-    //         Issue Year          : {:?}
-    //         Expiration Year     : {:?}
-    //         Birth Year          : {:?}
-    //         Height              : {:?}{:?}
-    //         Hair Color          : {:?}
-    //         Eye Color           : {:?}
-
-
-    // ", 
-    // pid, iyr, eyr, byr, hgt[0], hgt[1], hcl, ecl    );
-    
-    println!("{}",pid);
     return true;
 
 }

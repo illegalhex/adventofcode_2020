@@ -40,3 +40,7 @@ fn find_number_of_trees_mul(){
 fn find_number_of_valid_passports(){
     assert_eq!( adventofcode_2020::number_of_passports(false, adventofcode_2020::input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 210 );
 }
+#[test]
+fn find_number_of_valid_passports_and_validate(){
+    assert_eq!( adventofcode_2020::number_of_passports(true, adventofcode_2020::input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 131 );
+}
