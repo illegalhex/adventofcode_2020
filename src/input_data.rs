@@ -39,7 +39,7 @@ pub mod print{
             }
             return_vec.push(temp_hash);
         }
-        // println!("{:?}",return_vec );
+        println!("{:?}",return_vec );
         return_vec
     }
     

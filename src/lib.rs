@@ -165,17 +165,19 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     }
     if vec!["amb".to_string(), "blu".to_string(), "brn".to_string(), "gry".to_string(), "grn".to_string(), "hzl".to_string(), "oth".to_string(), ].into_iter().find(|x| x == ecl) == None {return false};
     
-    println!(" passport with id of {:?} has the data of:
-            Issue Year          : {:?}
-            Expiration Year     : {:?}
-            Birth Year          : {:?}
-            Height              : {:?}{:?}
-            Hair Color          : {:?}
-            Eye Color           : {:?}
+    // println!(" passport with id of {:?} has the data of:
+    //         Issue Year          : {:?}
+    //         Expiration Year     : {:?}
+    //         Birth Year          : {:?}
+    //         Height              : {:?}{:?}
+    //         Hair Color          : {:?}
+    //         Eye Color           : {:?}
 
 
-    ", 
-    pid, iyr, eyr, byr, hgt[0], hgt[1], hcl, ecl    );
+    // ", 
+    // pid, iyr, eyr, byr, hgt[0], hgt[1], hcl, ecl    );
+    
+    println!("{}",pid);
     return true;
 
 }
