@@ -104,17 +104,17 @@ pub fn check_passport_fields(passport: HashMap<String, String>) -> bool {
 pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     let passport_clone = passport.clone();
     if check_passport_fields(passport_clone) == false {return false}; 
-    let mut byr = passport.get("byr").unwrap().parse::<isize>();
-    let mut iyr = passport.get("iyr").unwrap().parse::<isize>();
-    let mut eyr = passport.get("eyr").unwrap().parse::<isize>();
-    let mut hgt_t = passport.get("hgt").unwrap();
-    let mut hcl_t = passport.get("hcl").unwrap();
-    let mut ecl = passport.get("ecl").unwrap();
-    let mut pid = passport.get("pid").unwrap();
+    let byr = passport.get("byr").unwrap().parse::<isize>();
+    let iyr = passport.get("iyr").unwrap().parse::<isize>();
+    let eyr = passport.get("eyr").unwrap().parse::<isize>();
+    let hgt_t = passport.get("hgt").unwrap();
+    let hcl_t = passport.get("hcl").unwrap();
+    let ecl = passport.get("ecl").unwrap();
+    let pid = passport.get("pid").unwrap();
 
     if pid.len() != 9 {return false};
 
-    let mut pid = pid.parse::<isize>();
+    let  pid = pid.parse::<isize>();
     if !hgt_t.contains("cm") {if  !hgt_t.contains("in") {return false}};
     let hgt_match = hgt_t.chars().collect::<Vec<char>>();
     let hgt: Vec<String> = vec![
@@ -123,9 +123,9 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     ];
     if hgt.len() != 2 {return false};
     if hcl_t.len() != 7 {return false};
-    let mut hcl = hcl_t.trim_start_matches("#");
+    let hcl = hcl_t.trim_start_matches("#");
     if hcl.len() != 6 {return false};
-    let mut hcl = isize::from_str_radix(hcl, 16);
+    let hcl = isize::from_str_radix(hcl, 16);
 
 
     let byr = match byr {
@@ -144,11 +144,11 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
         Ok(_) => {},
         Err(_) => return false,
     };
-    let pid = match pid {
+    match pid {
         Ok(pid_r) => pid_r,
         Err(_) => return false
     };
-    let hcl =match hcl {
+    match hcl {
         Ok(hcl_r) => hcl_r,
         Err(_) => return false
     };
