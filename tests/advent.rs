@@ -166,10 +166,10 @@ fn find_number_good_passports(){
     assert_eq!(adventofcode_2020::number_of_passports(true, return_good_passports()), 4)
 }
 
-// #[test]
-// fn find_number_bad_passports(){
-//     assert_eq!(adventofcode_2020::number_of_passports(true, return_bad_passports()), 0)
-// }
+#[test]
+fn find_number_bad_passports(){
+    assert_eq!(adventofcode_2020::number_of_passports(true, return_bad_passports()), 0)
+}
 
 fn test_password_contents(contents: HashMap<String, String>)-> bool{
     return adventofcode_2020::test_passport_contents(contents);
@@ -200,27 +200,27 @@ fn test_password_contents_good_four(){
     );
 }
 
-// #[test]
-// fn test_password_contents_bad_one(){
-//     assert_eq!(
-//         adventofcode_2020::test_passport_contents(return_bad_passports().get(0).unwrap().clone()), false
-//     );
-// }
-// #[test]
-// fn test_password_contents_bad_two(){
-//     assert_eq!(
-//         adventofcode_2020::test_passport_contents(return_bad_passports().get(1).unwrap().clone()), false
-//     );
-// }
-// #[test]
-// fn test_password_contents_bad_three(){
-//     assert_eq!(
-//         adventofcode_2020::test_passport_contents(return_bad_passports().get(2).unwrap().clone()), false
-//     );
-// }
-// #[test]
-// fn test_password_contents_bad_four(){
-//     assert_eq!(
-//         adventofcode_2020::test_passport_contents(return_bad_passports().get(3).unwrap().clone()), false
-//     );
-// }
+#[test]
+fn test_password_contents_bad_one(){
+    assert_eq!(
+        adventofcode_2020::test_passport_contents(return_bad_passports().get(0).unwrap().clone()), false
+    );
+}
+#[test]
+fn test_password_contents_bad_two(){
+    assert_eq!(
+        adventofcode_2020::test_passport_contents(return_bad_passports().get(1).unwrap().clone()), false
+    );
+}
+#[test]
+fn test_password_contents_bad_three(){
+    assert_eq!(
+        adventofcode_2020::test_passport_contents(return_bad_passports().get(2).unwrap().clone()), false
+    );
+}
+#[test]
+fn test_password_contents_bad_four(){
+    assert_eq!(
+        adventofcode_2020::test_passport_contents(return_bad_passports().get(3).unwrap().clone()), false
+    );
+}

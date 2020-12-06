@@ -119,36 +119,48 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
         hgt_t.split(|s| (s == 'c') || (s == 'i')).collect::<String>().split(|s| (s == 'm') || (s == 'n')).collect::<String>(),
         format!("{}{}", hgt_match[hgt_match.len()-2], hgt_match[hgt_match.len()-1].to_string() ) 
     ];
-    let hcl = hcl_t.split("#").collect::<String>();
     if hgt.len() != 2 {return false};
+    if hcl_t.len() != 7 {return false};
+    let mut hcl = hcl_t.trim_start_matches("#");
+    if hcl.len() != 6 {return false};
+    let mut hcl = isize::from_str_radix(hcl, 16);
 
-    match byr {
-        Ok(byr_r) => byr = Ok(byr_r),
+
+    let byr = match byr {
+        Ok(byr_r) => byr_r,
         Err(_) => return false
-    }
-    let byr = byr.unwrap();
-    match iyr {
-        Ok(iyr_r) => iyr = Ok(iyr_r),
+    };
+    let iyr = match iyr {
+        Ok(iyr_r) => iyr_r,
         Err(_) => return false
-    }
-    let iyr = iyr.unwrap();
-    match eyr {
-        Ok(eyr_r) => eyr = Ok(eyr_r),
+    };
+    let eyr  =match eyr {
+        Ok(eyr_r) => eyr_r,
         Err(_) => return false
-    }
-    let eyr = eyr.unwrap();
+    };
     match hgt[0].parse::<isize>(){
         Ok(_) => {},
         Err(_) => return false,
-    }
-    match pid {
-        Ok(pid_r) => pid = Ok(pid_r),
+    };
+    let pid = match pid {
+        Ok(pid_r) => pid_r,
         Err(_) => return false
-    }
-    let pid = pid.unwrap();
+    };
+    let hcl =match hcl {
+        Ok(hcl_r) => hcl_r,
+        Err(_) => return false
+    };
 
 
     // if 
+    println!("{:?}", byr );
+    println!("{:?}", iyr );
+    println!("{:?}", eyr );
+    println!("{:?}", hgt );
+
+    println!("{:?}", hcl );
+    println!("{:?}", ecl );
+    println!("{:?}", pid );
 
     if byr > 2002 || byr < 1920 {return false};
     if iyr > 2020 || iyr < 2010 {return false};
@@ -162,15 +174,19 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
         if height > 76 || height < 59 {return false};
     }
     if vec!["amb".to_string(), "blu".to_string(), "brn".to_string(), "gry".to_string(), "grn".to_string(), "hzl".to_string(), "oth".to_string(), ].into_iter().find(|x| x == ecl) == None {return false};
-    println!("{:?}", byr );
-    println!("{:?}", iyr );
-    println!("{:?}", eyr );
-    println!("{:?}", hgt );
+    
+    println!(" passport with id of {:?} has the data of:
+            Issue Year          : {:?}
+            Expiration Year     : {:?}
+            Birth Year          : {:?}
+            Height              : {:?}{:?}
+            Hair Color          : {:?}
+            Eye Color           : {:?}
 
-    println!("{:?}", hcl );
-    println!("{:?}", ecl );
-    println!("{:?}", pid );
-    panic!();
+
+    ", 
+    pid, iyr, eyr, byr, hgt[0], hgt[1], hcl, ecl    );
     return true;
+
 }
 

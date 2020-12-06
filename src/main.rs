@@ -22,6 +22,7 @@ fn day3(){
 
 fn day4(){
     println!("There are {} valid passports if cid is ignored", adventofcode_2020::number_of_passports(false, input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))));
+    println!("There are {} valid passports if cid is ignored and data is validated", adventofcode_2020::number_of_passports(true, input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))));
 }
 
 fn main() {
