@@ -108,31 +108,60 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     let mut byr = passport.get("byr").unwrap().parse::<isize>();
     let mut iyr = passport.get("iyr").unwrap().parse::<isize>();
     let mut eyr = passport.get("eyr").unwrap().parse::<isize>();
-    let mut hgt = passport.get("hgt").unwrap();
-    let mut hcl = passport.get("hcl").unwrap();
+    let mut hgt_t = passport.get("hgt").unwrap();
+    let mut hcl_t = passport.get("hcl").unwrap();
     let mut ecl = passport.get("ecl").unwrap();
-    let mut pid = passport.get("pid").unwrap().parse::<isize>();
-    // let 
+    let mut pid = passport.get("pid").unwrap();
+    if pid.len() != 9 {return false};
+    let mut pid = pid.parse::<isize>();
+    let hgt_match = hgt_t.chars().collect::<Vec<char>>();
+    let hgt: Vec<String> = vec![
+        hgt_t.split(|s| (s == 'c') || (s == 'i')).collect::<String>().split(|s| (s == 'm') || (s == 'n')).collect::<String>(),
+        format!("{}{}", hgt_match[hgt_match.len()-2], hgt_match[hgt_match.len()-1].to_string() ) 
+    ];
+    let hcl = hcl_t.split("#").collect::<String>();
+    if hgt.len() != 2 {return false};
+
     match byr {
         Ok(byr_r) => byr = Ok(byr_r),
         Err(_) => return false
     }
+    let byr = byr.unwrap();
     match iyr {
         Ok(iyr_r) => iyr = Ok(iyr_r),
         Err(_) => return false
     }
+    let iyr = iyr.unwrap();
     match eyr {
         Ok(eyr_r) => eyr = Ok(eyr_r),
         Err(_) => return false
     }
-    // match hgt {
-    //     Ok(hgt_r) => hgt = Ok(hgt_r),
-    //     Err(_) => return false
-    // }
+    let eyr = eyr.unwrap();
+    match hgt[0].parse::<isize>(){
+        Ok(_) => {},
+        Err(_) => return false,
+    }
     match pid {
         Ok(pid_r) => pid = Ok(pid_r),
         Err(_) => return false
     }
+    let pid = pid.unwrap();
+
+
+    // if 
+
+    if byr > 2002 || byr < 1920 {return false};
+    if iyr > 2020 || iyr < 2010 {return false};
+    if eyr > 2030 || eyr < 2020 {return false};
+    if hgt[1] == "cm"{
+        let height = hgt[0].parse::<isize>().unwrap();
+        if height > 193 || height < 150 {return false};
+    }
+    if hgt[1] == "in"{
+        let height = hgt[0].parse::<isize>().unwrap();
+        if height > 76 || height < 59 {return false};
+    }
+    if vec!["amb".to_string(), "blu".to_string(), "brn".to_string(), "gry".to_string(), "grn".to_string(), "hzl".to_string(), "oth".to_string(), ].into_iter().find(|x| x == ecl) == None {return false};
     println!("{:?}", byr );
     println!("{:?}", iyr );
     println!("{:?}", eyr );
@@ -141,6 +170,7 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     println!("{:?}", hcl );
     println!("{:?}", ecl );
     println!("{:?}", pid );
+    panic!();
     return true;
 }
 
