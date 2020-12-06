@@ -103,8 +103,7 @@ pub fn check_passport_fields(passport: HashMap<String, String>) -> bool {
 
 pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     let passport_clone = passport.clone();
-    if check_passport_fields(passport_clone) == false {return false;} 
-    // if 2020 >= passport.get("byr").unwrap()parse::<i32>(); 
+    if check_passport_fields(passport_clone) == false {return false}; 
     let mut byr = passport.get("byr").unwrap().parse::<isize>();
     let mut iyr = passport.get("iyr").unwrap().parse::<isize>();
     let mut eyr = passport.get("eyr").unwrap().parse::<isize>();
@@ -112,7 +111,9 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     let mut hcl_t = passport.get("hcl").unwrap();
     let mut ecl = passport.get("ecl").unwrap();
     let mut pid = passport.get("pid").unwrap();
+
     if pid.len() != 9 {return false};
+
     let mut pid = pid.parse::<isize>();
     let hgt_match = hgt_t.chars().collect::<Vec<char>>();
     let hgt: Vec<String> = vec![
@@ -151,27 +152,16 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
         Err(_) => return false
     };
 
-
-    // if 
-    println!("{:?}", byr );
-    println!("{:?}", iyr );
-    println!("{:?}", eyr );
-    println!("{:?}", hgt );
-
-    println!("{:?}", hcl );
-    println!("{:?}", ecl );
-    println!("{:?}", pid );
-
-    if byr > 2002 || byr < 1920 {return false};
-    if iyr > 2020 || iyr < 2010 {return false};
-    if eyr > 2030 || eyr < 2020 {return false};
+    if byr < 1920  || byr > 2002  {return false};
+    if iyr < 2010  || iyr > 2020  {return false};
+    if eyr < 2020  || eyr > 2030   {return false};
     if hgt[1] == "cm"{
         let height = hgt[0].parse::<isize>().unwrap();
-        if height > 193 || height < 150 {return false};
+        if  height < 150 || height > 193 {return false};
     }
     if hgt[1] == "in"{
         let height = hgt[0].parse::<isize>().unwrap();
-        if height > 76 || height < 59 {return false};
+        if height < 59 || height > 76  {return false};
     }
     if vec!["amb".to_string(), "blu".to_string(), "brn".to_string(), "gry".to_string(), "grn".to_string(), "hzl".to_string(), "oth".to_string(), ].into_iter().find(|x| x == ecl) == None {return false};
     
