@@ -19,7 +19,7 @@ fn find_2020_triplets(){
         675,
         1456]).unwrap(), 241861950)
 }
-
+// day 2
 #[test]
 fn find_num_valid_passwords_old(){
     assert_eq!(adventofcode_2020::valid_password("old", vec![
@@ -38,7 +38,7 @@ fn find_num_valid_passwords_new(){
     ]), 1)
 }
 
-
+// day 3
 fn return_tree_map() -> Vec<String> {
     return vec![
         "..##.........##.........##.........##.........##.........##.......".to_string(),
@@ -96,6 +96,7 @@ fn find_multislopes_trees_product(){
     assert_eq!(first * second * third * forth * fifth, 336);
 }
 
+// day 4
 fn return_passports() -> Vec<HashMap<String, String>> {
     let input: Vec<String> = vec![
                     "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd".to_string(),
@@ -171,6 +172,7 @@ fn find_number_bad_passports(){
     assert_eq!(adventofcode_2020::number_of_passports(true, return_bad_passports()), 0)
 }
 
+#[allow( dead_code)]
 fn test_password_contents(contents: HashMap<String, String>)-> bool{
     return adventofcode_2020::test_passport_contents(contents);
 }
@@ -222,5 +224,41 @@ fn test_password_contents_bad_three(){
 fn test_password_contents_bad_four(){
     assert_eq!(
         adventofcode_2020::test_passport_contents(return_bad_passports().get(3).unwrap().clone()), false
+    );
+}
+
+// day 5
+
+fn boarding_passes() -> Vec<String> {
+    return vec![
+    "BFFFBBFRRR".to_string(),
+    "FFFBBBFRRR".to_string(),
+    "BBFFBBFRLL".to_string()
+    ]
+}
+
+#[test]
+fn test_boarding_one(){
+    assert_eq!(
+        adventofcode_2020::boarding_pass_id(boarding_passes().get(0).unwrap().clone()), Ok(567)
+    );
+}
+#[test]
+fn test_boarding_two(){
+    assert_eq!(
+        adventofcode_2020::boarding_pass_id(boarding_passes().get(1).unwrap().clone()), Ok(119)
+    );
+}
+#[test]
+fn test_boarding_three(){
+    assert_eq!(
+        adventofcode_2020::boarding_pass_id(boarding_passes().get(2).unwrap().clone()), Ok(820)
+    );
+}
+
+#[test]
+fn test_largest_boarding(){
+    assert_eq!(
+        adventofcode_2020::find_largest_boarding_pass_id(boarding_passes()), 820
     );
 }

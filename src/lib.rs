@@ -127,7 +127,6 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
     if hcl.len() != 6 {return false};
     let hcl = isize::from_str_radix(hcl, 16);
 
-
     let byr = match byr {
         Ok(byr_r) => byr_r,
         Err(_) => return false
@@ -170,3 +169,86 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
 
 }
 
+pub fn boarding_pass_id(boarding_pass: String) -> Result<isize, String> {
+    if boarding_pass.len() != 10 {return Err("invlaid boarding pass".to_string())};
+    let mut row: isize = 0;
+    let mut seat: isize = 0;
+    let  boarding_pass_i = &boarding_pass.chars().collect::<Vec<char>>();
+
+    if boarding_pass_i[0] == 'B' {
+        row += 64
+    }
+    if boarding_pass_i[1] == 'B' {
+        row += 32
+    }
+    if boarding_pass_i[2] == 'B' {
+        row += 16
+    }
+    if boarding_pass_i[3] == 'B' {
+        row += 8
+    }
+    if boarding_pass_i[4] == 'B' {
+        row += 4
+    }
+    if boarding_pass_i[5] == 'B' {
+        row += 2
+    }
+    if boarding_pass_i[6] == 'B' {
+        row += 1
+    }
+    if boarding_pass_i[7] == 'R' {
+        seat += 4
+    }
+    if boarding_pass_i[8] == 'R' {
+        seat += 2
+    }
+    if boarding_pass_i[9] == 'R' {
+        seat += 1
+    }
+    return Ok((row * 8)+seat)
+}
+
+pub fn find_largest_boarding_pass_id(boarding_id: Vec<String>) -> isize{
+    let mut largest = 0;
+    for i in boarding_id.into_iter(){
+        let current = match boarding_pass_id(i){
+            Ok(val) => val,
+            _ => continue
+            
+        };
+        if current > largest {
+            largest = current;
+        }
+    }
+    return largest
+}
+
+pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
+    let mut list: Vec<isize> = Vec::new();
+    let mut mine = 0;
+    for i in boarding_id.into_iter(){
+        let current = match boarding_pass_id(i){
+            Ok(val) => val,
+            _ => continue
+            
+        };
+        list.push(current);
+    }
+    let list_copy = list.clone();
+    let mut candiates: Vec<isize> = Vec::new();
+    for i in list.into_iter(){
+        if !list_copy.contains(&(i+1)){
+            candiates.push(i)
+        }
+        if !list_copy.contains(&(i-1)){
+            candiates.push(i)
+        }
+    }
+    for i in candiates.into_iter().permutations(2).into_iter() {
+        if i[1]-i[0] ==2 {
+            mine = i[0] + 1;
+        }
+    }
+
+    return mine
+}

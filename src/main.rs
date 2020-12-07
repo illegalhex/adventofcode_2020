@@ -42,9 +42,21 @@ fn day4(){
     println!("Day 4 part two took: {} ms to run\n", now2.elapsed().as_millis());
 }
 
+fn day5(){
+    let now1 = Instant::now();
+    println!("The largest valid boarding pass is: {}", 
+    adventofcode_2020::find_largest_boarding_pass_id(adventofcode_2020::readlines("text/day5.txt" )));
+    let now2 = Instant::now();
+    println!("My boarding pass is: {}",
+    adventofcode_2020::find_my_boarding_pass(adventofcode_2020::readlines("text/day5.txt" )));
+    println!("Day 5 part one took: {} ms to run", now1.elapsed().as_millis());
+    println!("Day 5 part two took: {} ms to run\n", now2.elapsed().as_millis());
+}
+
 fn main() {
     day1();
     day2();
     day3();
     day4();
+    day5()
 }
