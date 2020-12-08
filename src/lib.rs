@@ -170,61 +170,9 @@ pub fn test_passport_contents(passport: HashMap<String, String>) -> bool {
 }
 
 pub fn boarding_pass_id(boarding_pass: String) -> Result<isize, String> {
-    if boarding_pass.len() != 10 {return Err("invlaid boarding pass".to_string())};
-    // println!("{}", &boarding_pass[0..6]);
-    // let row = i8::from_str_radix(
-    //     &boarding_pass[0..6].chars().map(|c| if c == 'F' {'0'} else {'1'}
-    //     ).collect::<Vec<char>>().into_iter().collect::<String>(), 2);
-    // let column = i8::from_str_radix(
-    //     &boarding_pass[0..6].chars().map(|c| if c == 'F' {'0'} else {'1'}
-    //     ).collect::<Vec<char>>().into_iter().collect::<String>(), 2);
-    // println!("{}",&boarding_pass); 
+    if boarding_pass.len() != 10 {return Err("invalid boarding pass".to_string())};
     let boarding_id =  &boarding_pass[0..10].chars().map(|c| if (c == 'F') || (c == 'L') {'0'} else {'1'}).collect::<String>();
-    // .collect::<Vec<char>>().into_iter().collect::<String>();
-    // let row = i8::from_str_radix(row, 2);
-    // println!("{:?} {:?} {:?} {:?} {:?}", &boarding_id, &boarding_id[0..7], isize::from_str_radix(&boarding_id[0..7], 2) ,  &boarding_id[7..10], isize::from_str_radix(&boarding_id[7..10], 2));
-    
-    // let column  = &boarding_pass[7..9].chars().map(|c| if c == 'L' {'0'} else {'1'}).collect::<Vec<char>>().into_iter().collect::<String>();
-    // let 
-    // println!("{:?}", column);
-    // let mut row: isize = 0;
-    // let mut seat: isize = 0;
-    // let  boarding_pass_i = &boarding_pass.chars().collect::<Vec<char>>();
-
-    // if boarding_pass_i[0] == 'B' {
-    //     row += 64
-    // }
-    // if boarding_pass_i[1] == 'B' {
-    //     row += 32
-    // }
-    // if boarding_pass_i[2] == 'B' {
-    //     row += 16
-    // }
-    // if boarding_pass_i[3] == 'B' {
-    //     row += 8
-    // }
-    // if boarding_pass_i[4] == 'B' {
-    //     row += 4
-    // }
-    // if boarding_pass_i[5] == 'B' {
-    //     row += 2
-    // }
-    // if boarding_pass_i[6] == 'B' {
-    //     row += 1
-    // }
-    
-    // if boarding_pass_i[7] == 'R' {
-    //     seat += 4
-    // }
-    // if boarding_pass_i[8] == 'R' {
-    //     seat += 2
-    // }
-    // if boarding_pass_i[9] == 'R' {
-    //     seat += 1
-    // }
-    // panic!();
     return Ok((isize::from_str_radix(&boarding_id[0..7], 2).unwrap() * 8) + isize::from_str_radix(&boarding_id[7..10], 2).unwrap())
-    // return Ok(1)
 }
 
 pub fn find_largest_boarding_pass_id(boarding_id: Vec<String>) -> isize{
