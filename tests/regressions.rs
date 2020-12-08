@@ -51,5 +51,5 @@ fn find_largest_boarding_pass(){
 }
 #[test]
 fn find_my_boarding_pass(){
-    assert_eq!( adventofcode_2020::find_my_boarding_pass(adventofcode_2020::readlines("text/day5.txt" )) 743 );
+    assert_eq!( adventofcode_2020::find_my_boarding_pass(adventofcode_2020::readlines("text/day5.txt" )), 743 );
 }
