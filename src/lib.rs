@@ -182,7 +182,7 @@ pub fn boarding_pass_id(boarding_pass: String) -> Result<isize, String> {
     let boarding_id =  &boarding_pass[0..10].chars().map(|c| if (c == 'F') || (c == 'L') {'0'} else {'1'}).collect::<String>();
     // .collect::<Vec<char>>().into_iter().collect::<String>();
     // let row = i8::from_str_radix(row, 2);
-    // println!("{:?} {:?} {:?} {:?} {:?}", &boarding_id, &boarding_id[0..7], isize::from_str_radix(&boarding_id[0..7], 2) ,  &boarding_id[6..10], isize::from_str_radix(&boarding_id[6..10], 2));
+    // println!("{:?} {:?} {:?} {:?} {:?}", &boarding_id, &boarding_id[0..7], isize::from_str_radix(&boarding_id[0..7], 2) ,  &boarding_id[7..10], isize::from_str_radix(&boarding_id[7..10], 2));
     
     // let column  = &boarding_pass[7..9].chars().map(|c| if c == 'L' {'0'} else {'1'}).collect::<Vec<char>>().into_iter().collect::<String>();
     // let 
@@ -223,7 +223,7 @@ pub fn boarding_pass_id(boarding_pass: String) -> Result<isize, String> {
     //     seat += 1
     // }
     // panic!();
-    return Ok((isize::from_str_radix(&boarding_id[0..7], 2).unwrap() * 8) + isize::from_str_radix(&boarding_id[6..10], 2).unwrap())
+    return Ok((isize::from_str_radix(&boarding_id[0..7], 2).unwrap() * 8) + isize::from_str_radix(&boarding_id[7..10], 2).unwrap())
     // return Ok(1)
 }
 
@@ -236,6 +236,7 @@ pub fn find_largest_boarding_pass_id(boarding_id: Vec<String>) -> isize{
             
         };
         if current > largest {
+            println!("{}", current );
             largest = current;
         }
     }
@@ -254,17 +255,17 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
         list.push(current);
     }
     let list_copy = list.clone();
-    println!("{:?}", list_copy);
+    // println!("{:?}", list_copy);
     let mut candiates: Vec<isize> = Vec::new();
     for i in list.into_iter(){
         if !list_copy.contains(&(i+1)){
             candiates.push(i)
         }
-        // if !list_copy.contains(&(i-1)){
-        //     candiates.push(i)
-        // }
+        if !list_copy.contains(&(i-1)){
+            candiates.push(i)
+        }
     }
-    // println!("{:?}", candiates);
+    println!("{:?}", candiates);
     for i in candiates.into_iter().permutations(2).into_iter() {
         if i[1]-i[0] ==2 {
             mine = i[0] + 1;

@@ -257,6 +257,19 @@ fn test_boarding_three(){
 }
 
 #[test]
+fn test_boarding_four(){
+    assert_eq!(
+        adventofcode_2020::boarding_pass_id("BBBBBBBRRR".to_string()), Ok(1023)
+    );
+}
+#[test]
+fn test_boarding_five(){
+    assert_eq!(
+        adventofcode_2020::boarding_pass_id("FFFFFFFLLL".to_string()), Ok(0)
+    );
+}
+
+#[test]
 fn test_largest_boarding(){
     assert_eq!(
         adventofcode_2020::find_largest_boarding_pass_id(boarding_passes()), 820
