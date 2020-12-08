@@ -44,3 +44,12 @@ fn find_number_of_valid_passports(){
 fn find_number_of_valid_passports_and_validate(){
     assert_eq!( adventofcode_2020::number_of_passports(true, adventofcode_2020::input_data::print::print_day4(adventofcode_2020::readlines("text/day4.txt" ))), 131 );
 }
+
+#[test]
+fn find_largest_boarding_pass(){
+    assert_eq!( adventofcode_2020::find_largest_boarding_pass_id(adventofcode_2020::readlines("text/day5.txt" )), 935 );
+}
+#[test]
+fn find_my_boarding_pass(){
+    assert_eq!( adventofcode_2020::find_my_boarding_pass(adventofcode_2020::readlines("text/day5.txt" )) 743 );
+}
