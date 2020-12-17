@@ -186,7 +186,6 @@ pub fn find_largest_boarding_pass_id(boarding_id: Vec<String>) -> isize{
             
         };
         if current > largest {
-            println!("{}", current );
             largest = current;
         }
     }
@@ -205,7 +204,6 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
         list.push(current);
     }
     let list_copy = list.clone();
-    // println!("{:?}", list_copy);
     let mut candiates: Vec<isize> = Vec::new();
     for i in list.into_iter(){
         if !list_copy.contains(&(i+1)){
@@ -215,7 +213,6 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
             candiates.push(i)
         }
     }
-    println!("{:?}", candiates);
     for i in candiates.into_iter().permutations(2).into_iter() {
         if i[1]-i[0] ==2 {
             mine = i[0] + 1;
@@ -262,7 +259,7 @@ pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> us
                 temp_vec.push(temp_hash);
             }
             let hash_inter = temp_vec.into_iter().fold_first(set_intersect).unwrap();
-            count += dbg!(hash_inter.len());
+            count += hash_inter.len();
         }
         return count
     }
