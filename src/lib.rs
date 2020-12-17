@@ -224,16 +224,14 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
 }
 
 pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> usize {
-    let mut count = 0;
+
     if card_type == 0 {
-        
-        let question_cards_vecs = question_cards.into_iter().map(
-                                    |s| if s == "" {s.replace("",",")}else{s}).
-                                    collect::<Vec<String>>().concat().split(',').
-                                    map(String::from).collect::<Vec<String>>().
-                                    iter().map(
-                                        |s| s.chars().collect::<Vec<char>>()
-                                    ).collect::<Vec<Vec<char>>>();
+        let mut count = 0;
+        let qc_split_on_nl : Vec<String> = question_cards.into_iter().map(|s| if s == "" {s.replace("",",")}else{s}).collect();
+        let qc_split_on_comma: Vec<String> = qc_split_on_nl.concat().split(',').map(String::from).collect();
+        let question_cards_vecs = qc_split_on_comma.iter().map(|s| s.chars().collect::<Vec<char>>()).
+                                    collect::<Vec<Vec<char>>>();
+
         for vector in &question_cards_vecs {
             let mut temp_set = HashSet::new();
             for element in vector {
