@@ -258,7 +258,7 @@ pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> us
                 }
                 temp_vec.push(temp_hash);
             }
-            let hash_inter = temp_vec.into_iter().fold_first(set_intersect).unwrap();
+            let hash_inter = temp_vec.into_iter().fold1(set_intersect).unwrap();
             count += hash_inter.len();
         }
         return count
@@ -276,3 +276,6 @@ fn set_intersect(a:HashSet<char>, b:HashSet<char>) -> HashSet<char> {
 }
 
 
+pub fn find_number_gold_bags(a: Vec<String>) -> isize{
+    return 1
+}

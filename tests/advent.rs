@@ -311,3 +311,24 @@ fn test_number_of_all_yeses(){
     );
 
 }
+
+fn print_bags() ->Vec<String> {
+    return vec![
+        "light red bags contain 1 bright white bag, 2 muted yellow bags.".to_string(),
+        "dark orange bags contain 3 bright white bags, 4 muted yellow bags.".to_string(),
+        "bright white bags contain 1 shiny gold bag.".to_string(),
+        "muted yellow bags contain 2 shiny gold bags, 9 faded blue bags.".to_string(),
+        "shiny gold bags contain 1 dark olive bag, 2 vibrant plum bags.".to_string(),
+        "dark olive bags contain 3 faded blue bags, 4 dotted black bags.".to_string(),
+        "vibrant plum bags contain 5 faded blue bags, 6 dotted black bags.".to_string(),
+        "faded blue bags contain no other bags.".to_string(),
+        "dotted black bags contain no other bags.".to_string(),
+    ]
+}
+
+#[test]
+fn test_number_of_gold_bags(){
+    assert_eq!(
+        adventofcode_2020::find_number_gold_bags(print_bags()), 1
+    )
+}
