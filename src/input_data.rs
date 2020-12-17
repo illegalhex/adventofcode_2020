@@ -42,9 +42,9 @@ pub mod print{
         return_vec
     }
     
-    pub fn print_day6(print_vec: Vec<String>) -> Vec<String>{
-        let return_vec = print_vec.into_iter().map(|s| if s == "" {s.replace("",",")}else{s}).collect::<Vec<String>>()
-                        .concat().split(',').map(String::from).collect::<Vec<String>>();
-        return return_vec
-        }
+    // pub fn print_day6(print_vec: Vec<String>) -> Vec<String>{
+    //     let return_vec = print_vec.into_iter().map(|s| if s == "" {s.replace("",",")}else{s}).collect::<Vec<String>>()
+    //                     .concat().split(',').map(String::from).collect::<Vec<String>>();
+    //     return return_vec
+    //     }
 }   

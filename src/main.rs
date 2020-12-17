@@ -56,7 +56,7 @@ fn day5(){
 fn day6(){
     let now1 = Instant::now();
     println!("The number of yes on all custom cards is: {}", 
-    adventofcode_2020::find_number_of_yeses(0, input_data::print::print_day6(adventofcode_2020::readlines("text/day6.txt" ))));
+    adventofcode_2020::find_number_of_yeses(0, adventofcode_2020::readlines("text/day6.txt" )));
     println!("Day 6 part one took: {} ms to run", now1.elapsed().as_millis());
 }
 

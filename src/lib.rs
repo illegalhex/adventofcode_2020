@@ -224,9 +224,8 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
 }
 
 pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> usize {
-
+    let mut count = 0;
     if card_type == 0 {
-        let mut count = 0;
         let qc_split_on_nl : Vec<String> = question_cards.into_iter().map(|s| if s == "" {s.replace("",",")}else{s}).collect();
         let qc_split_on_comma: Vec<String> = qc_split_on_nl.concat().split(',').map(String::from).collect();
         let question_cards_vecs = qc_split_on_comma.iter().map(|s| s.chars().collect::<Vec<char>>()).
@@ -241,9 +240,19 @@ pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> us
         }
         return count
     }
-    else {
-        return 6
+    else if card_type == 1  {
+        let qc_split_on_nl : Vec<String> = question_cards.into_iter().map(|s| if s == "" {s.replace("","\n")}else{format!("{},",s)}).collect();
+        // println!("{:?}", qc_split_on_nl);
+        let qc_text_join: Vec<String> = qc_split_on_nl.concat().split('\n').map(String::from).collect();
+        println!("{:?}", qc_text_join);
+        // let question_cards_vecs: Vec<_> = qc_text_join.iter().map(|mut &String s| s.pop()).collect();
+        // println!("{:?}", question_cards_vecs);
+
+        return 1
     }
+    else {
+            return 0
+        }
 }
 
 
