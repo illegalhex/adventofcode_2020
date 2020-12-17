@@ -56,5 +56,5 @@ fn find_my_boarding_pass(){
 
 #[test]
 fn find_number_of_yes_1(){
-    assert_eq!( adventofcode_2020::find_number_of_yeses(0, adventofcode_2020::input_data::print::print_day6(adventofcode_2020::readlines("text/day6.txt" ))), 6930 );
+    assert_eq!( adventofcode_2020::find_number_of_yeses(0, adventofcode_2020::readlines("text/day6.txt" )), 6930 );
 }

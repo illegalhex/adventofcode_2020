@@ -297,18 +297,6 @@ fn custom_cards() -> Vec<String> {
 }
 
 #[test]
-fn test_day6_vec_return(){
-    assert_eq!(adventofcode_2020::input_data::print::print_day6(custom_cards()),
-        vec![
-        "abc".to_string(),
-        "abc".to_string(),
-        "abac".to_string(),
-        "aaaa".to_string(),
-        "b".to_string()
-        ]
-    )
-}
-#[test]
 fn test_number_of_yeses(){
     assert_eq!(
         adventofcode_2020::find_number_of_yeses(0, custom_cards()), 11
@@ -319,7 +307,7 @@ fn test_number_of_yeses(){
 #[test]
 fn test_number_of_all_yeses(){
     assert_eq!(
-        adventofcode_2020::find_number_of_yeses(0, adventofcode_2020::input_data::print::print_day6(custom_cards())), 6
+        adventofcode_2020::find_number_of_yeses(1, custom_cards()), 6
     );
 
 }
