@@ -1,3 +1,4 @@
+#![feature(iterator_fold_self)]
 use itertools::Itertools;
 use std::fs::File;
 use std::io::{self, BufRead};
@@ -5,6 +6,7 @@ use std::path::Path;
 use std::collections::{HashMap, HashSet};
 
 pub mod input_data;
+
 
 pub fn loadfile<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>> where P: AsRef<Path>, {
     let file = File::open(filename)?;
@@ -248,27 +250,32 @@ pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> us
             group.pop();
             question_cards_cleaned.push(group);
         }
-        // println!("{:?}", question_cards_cleaned);
-
-        let mut question_cards_vecs: Vec<Vec<Vec<char>>> = Vec::new();
-        
         for group in question_cards_cleaned.into_iter() {
-            let pass_char = group.split(",").map(String::from).collect::<Vec<String>>().iter().map(|s| s.chars().collect::<Vec<char>>()).
-            collect::<Vec<Vec<char>>>();
-            // for 
-            question_cards_vecs.push(
-                pass_char
-            );            
+            let mut temp_vec: Vec<HashSet<char>> = Vec::new();
+            let pass_group = group.split(",").map(String::from).collect::<Vec<String>>();
+            for pass in &pass_group{
+                let mut temp_hash = HashSet::new();
+                let temp_vec_char: Vec<char> = pass.chars().collect::<Vec<char>>();
+                for i in temp_vec_char {
+                    temp_hash.insert(i);
+                }
+                temp_vec.push(temp_hash);
+            }
+            let hash_inter = temp_vec.into_iter().fold_first(set_intersect).unwrap();
+            count += dbg!(hash_inter.len());
         }
-
-        println!("{:?}", question_cards_vecs);
-
-
-        return 1
+        return count
     }
     else {
             return 0
         }
+}
+
+fn set_intersect(a:HashSet<char>, b:HashSet<char>) -> HashSet<char> {
+    let intersection = a.intersection(&b);
+    let mut temp_hash_set = HashSet::new();
+    intersection.for_each(|c| {temp_hash_set.insert(c.clone());});
+    temp_hash_set
 }
 
 
