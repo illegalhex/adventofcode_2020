@@ -242,11 +242,27 @@ pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> us
     }
     else if card_type == 1  {
         let qc_split_on_nl : Vec<String> = question_cards.into_iter().map(|s| if s == "" {s.replace("","\n")}else{format!("{},",s)}).collect();
-        // println!("{:?}", qc_split_on_nl);
         let qc_text_join: Vec<String> = qc_split_on_nl.concat().split('\n').map(String::from).collect();
-        println!("{:?}", qc_text_join);
-        // let question_cards_vecs: Vec<_> = qc_text_join.iter().map(|mut &String s| s.pop()).collect();
-        // println!("{:?}", question_cards_vecs);
+        let mut question_cards_cleaned: Vec<String> = Vec::new();
+        for mut group in qc_text_join.into_iter() {
+            group.pop();
+            question_cards_cleaned.push(group);
+        }
+        // println!("{:?}", question_cards_cleaned);
+
+        let mut question_cards_vecs: Vec<Vec<Vec<char>>> = Vec::new();
+        
+        for group in question_cards_cleaned.into_iter() {
+            let pass_char = group.split(",").map(String::from).collect::<Vec<String>>().iter().map(|s| s.chars().collect::<Vec<char>>()).
+            collect::<Vec<Vec<char>>>();
+            // for 
+            question_cards_vecs.push(
+                pass_char
+            );            
+        }
+
+        println!("{:?}", question_cards_vecs);
+
 
         return 1
     }
