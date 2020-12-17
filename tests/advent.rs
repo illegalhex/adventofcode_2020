@@ -275,3 +275,51 @@ fn test_largest_boarding(){
         adventofcode_2020::find_largest_boarding_pass_id(boarding_passes()), 820
     );
 }
+
+fn custom_cards() -> Vec<String> {
+    return vec![
+"abc".to_string(),
+"".to_string(),
+"a".to_string(),
+"b".to_string(),
+"c".to_string(),
+"".to_string(),
+"ab".to_string(),
+"ac".to_string(),
+"".to_string(),
+"a".to_string(),
+"a".to_string(),
+"a".to_string(),
+"a".to_string(),
+"".to_string(),
+"b".to_string()
+    ]
+}
+
+#[test]
+fn test_day6_vec_return(){
+    assert_eq!(adventofcode_2020::input_data::print::print_day6(custom_cards()),
+        vec![
+        "abc".to_string(),
+        "abc".to_string(),
+        "abac".to_string(),
+        "aaaa".to_string(),
+        "b".to_string()
+        ]
+    )
+}
+#[test]
+fn test_number_of_yeses(){
+    assert_eq!(
+        adventofcode_2020::find_number_of_yeses(0, custom_cards()), 11
+    );
+
+}
+
+#[test]
+fn test_number_of_all_yeses(){
+    assert_eq!(
+        adventofcode_2020::find_number_of_yeses(0, adventofcode_2020::input_data::print::print_day6(custom_cards())), 6
+    );
+
+}

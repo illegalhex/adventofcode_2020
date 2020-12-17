@@ -2,7 +2,7 @@ use itertools::Itertools;
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 pub mod input_data;
 
@@ -222,3 +222,25 @@ pub fn find_my_boarding_pass(boarding_id: Vec<String>) -> isize{
 
     return mine
 }
+
+pub fn find_number_of_yeses(card_type: usize, question_cards: Vec<String>) -> usize {
+    let mut count = 0;
+    if card_type == 0 {
+        let return_vec = print_vec.into_iter().map(|s| if s == "" {s.replace("",",")}else{s}).collect::<Vec<String>>()
+                        .concat().split(',').map(String::from).collect::<Vec<String>>();
+        let question_cards_vecs = question_cards.iter().map(|s| s.chars().collect::<Vec<char>>()).collect::<Vec<Vec<char>>>();
+        for vector in &question_cards_vecs {
+            let mut temp_set = HashSet::new();
+            for element in vector {
+                temp_set.insert(element);
+            }
+            count += temp_set.len()
+        }
+        return count
+    }
+    else {
+        return 1
+    }
+}
+
+
